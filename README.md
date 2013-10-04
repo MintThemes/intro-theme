@@ -1,4 +1,2 @@
-intro
-=====
-
-Intro Theme
+Intro-Theme
+===========
