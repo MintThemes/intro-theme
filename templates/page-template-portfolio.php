@@ -36,6 +36,11 @@ get_header(); ?>
 							'post_type'      => 'post',
 							'posts_per_page' => -1,
 							'tax_query'      => array(
+								'relation' => 'AND',
+								array(
+									'taxonomy' => 'portfolio_category',
+									'operator' => 'IN'
+								),
 								array(
 									'taxonomy' => 'post_format',
 									'field'    => 'slug',
@@ -56,15 +61,20 @@ get_header(); ?>
 							}
 							
 							$filters = trim( implode( ' ', $filter ) );
+					
+					
+						?>
+						<li class="<?php echo $filters; ?>">
+							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'intro' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+								<?php the_post_thumbnail( 'portfolio-outside' ); ?>							
+								<span class="mask"><span class="<?php intro_format_icon(); ?>"></span></span>
+							</a>
+							<span><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'intro' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></span>
+						</li>
+						<?php 
+					
+					endwhile; 
 					?>
-					<li class="<?php echo $filters; ?>">
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'intro' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-							<?php the_post_thumbnail( 'portfolio-outside' ); ?>							
-							<span class="mask"><span class="<?php intro_format_icon(); ?>"></span></span>
-						</a>
-						<span><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'intro' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></span>
-					</li>
-					<?php endwhile; ?>
 				</ul>
 			</div>
 		</div>

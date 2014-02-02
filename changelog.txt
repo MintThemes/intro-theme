@@ -1,4 +1,7 @@
 *** Intro Changelog ***
 
+2014.02.02 - version 1.0.0.2
+ * Fixed Portfolio page template showing posts that weren’t tagged with the portfolio taxonomy
+
 2012.08.01 - version 1.0
  * First release!
